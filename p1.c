@@ -13,6 +13,10 @@ void hashput(int val)
 	int i,hval;
 	for(i=0;i<MAXSIZE;i++)
 	{
+		if(i==1)
+		{
+			printf("Collision occured\n");
+		}
 		hval=hashfunc(val,i);
 		if(hash[hval]==0)
 		{
