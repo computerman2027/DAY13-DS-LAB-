@@ -40,6 +40,21 @@ void hashsearch(int val)
 	printf("Value not found\n");
 }
 
+void deletehash(int val)
+{
+	int i,hval;
+	for(i=0;i<MAXSIZE;i++)
+	{
+		hval=hashfunc(val,i);
+		if(hash[hval]==val)
+		{
+			hash[hval]=0;
+			return;
+		}
+	}
+	printf("Value not found\n");
+}
+
 void display()
 {
 	int i;
@@ -50,7 +65,7 @@ void display()
 	printf("\n");
 }
 
-void main()
+int main()
 {
 	int i;
 	for(i=0;i<MAXSIZE;i++)
@@ -59,7 +74,7 @@ void main()
 	int val;
 	while(1)
 	{
-		printf("MENU\n1. INSERT\n2. SEARCH\n3. DISPLAY\n4. EXIT\nEnter your choice : ");
+		printf("MENU\n1. INSERT\n2. SEARCH\n3. Delete\n4. DISPLAY\n5. EXIT\nEnter your choice : ");
 		scanf("%d",&choice);
 		switch(choice)
 		{
@@ -74,9 +89,14 @@ void main()
 				hashsearch(val);
 				break;
 			case 3:
-				display();
+				printf("Enter data to delete : ");
+				scanf("%d",&val);
+				deletehash(val);
 				break;
 			case 4:
+				display();
+				break;
+			case 5:
 				printf("Thank you\n");
 				return 0;
 			default:
